@@ -1,61 +1,61 @@
-Напиши класс Car с указанными свойствами и методами.
 
-class Car {
-  /*
-   * Добавь статический метод `getSpecs(car)`,
-   * который принимает объект-машину как параметр и выводит
-   * в консоль значения свойств maxSpeed, speed, isOn, distance и price.
-   */
 
-  /*
-   * Конструктор получает объект настроек.
-   *
-   * Добавь свойства будущеего экземпляра класса:
-   *  speed - текущая скорость, изначально 0
-   *  price - цена автомобиля
-   *  maxSpeed - максимальная скорость
-   *  isOn - заведен ли автомобиль, значения true или false. Изначально false
-   *  distance - общий киллометраж, изначально 0
-   */
-  constructor() {}
+  class Car {
 
-  /*
-   * Добавь геттер и сеттер для свойства price,
-   * который будет работать с свойством цены автомобиля.
-   */
-
-  /*
-   * Добавь код для того чтобы завести автомобиль
-   * Записывает в свойство isOn значение true
-   */
-  turnOn() {}
-
-  /*
-   * Добавь код для того чтобы заглушить автомобиль
-   * Записывает в свойство isOn значение false,
-   * и сбрасывает текущую скорость в 0
-   */
-  turnOff() {}
-
-  /*
-   * Добавялет к свойству speed полученное значение,
-   * при условии что результирующая скорость
-   * не больше чем значение свойства maxSpeed
-   */
-  accelerate(value) {}
-
-  /*
-   * Отнимает от свойства speed полученное значение,
-   * при условии что результирующая скорость не меньше нуля
-   */
-  decelerate(value) {}
-
-  /*
-   * Добавляет в поле distance киллометраж (hours * speed),
-   * но только в том случае если машина заведена!
-   */
-  drive(hours) {}
+  
+    constructor({ speed = 0, price, maxSpeed, isOn = false, distance = 0 }) {
+    this.speed = speed;
+    this._price = price;
+    this.maxSpeed = maxSpeed;
+    this.isOn = isOn;
+    this.distance = distance;
+    }
+  static getSpecs({ speed, price, maxSpeed, isOn, distance}) {
+    console.log(`Car's: maxSpeed= ${maxSpeed}, speed= ${speed}, isOn=${isOn}, distance = ${distance}, price= ${price}`);
 }
+
+
+  get price() {
+    return this._price;
+  }
+
+  set price(value) {
+    this._price = value;
+  }
+
+  turnOn() {
+    return this.isOn=true;
+  }
+
+  turnOff() {
+    return this.isOn = false;
+    
+  }
+
+  accelerate(value) {
+    if (value < this.maxSpeed) {
+      this.speed += value;
+    }
+    return this.speed;
+  }
+ 
+  decelerate(value) {
+    if (this.speed - value > 0) {
+      
+       this.speed -= value;
+
+    } return this.speed;
+
+  }
+    
+  drive(hours) {
+    if (this.isOn) {
+      this.distance += hours * this.speed;
+} return this.distance;
+
+  }
+}
+
 
 const mustang = new Car({ maxSpeed: 200, price: 2000 });
 

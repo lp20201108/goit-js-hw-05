@@ -1,39 +1,36 @@
-Напиши класс User для создания пользователя со следующим свойствами:
+// Напиши класс User для создания пользователя со следующим
+// свойствами:
 
-name - строка
-age - число
-followers - число
+// name - строка
+// age - число
+// followers - число
 
-Добавь метод getInfo(), который, выводит строку: User ${ имя } is ${ возраст } years old and has ${ кол - во фоловеров } followers
+// Добавь метод getInfo(), который, выводит строку: User ${ имя } is ${ возраст } years old and has ${ кол - во фоловеров } followers
 
 
-const User = function (name, age, followers) {
-    this.name = name,
-        this.age = age,
-        this.followers = followers,
-    
+
+
+
+
+class User{
+  
+  constructor(name, age, followers) {
+    this.name = name;
+    this.age = age;
+    this.followers = followers;
+  }
         
-        this.getInfo = function () {
-            console.log(`User ${this.name} is ${this.age} years old and has ${this.followers} followers`);
+  getInfo() {
+  console.log(`User ${this.name} is ${this.age} years old and has ${this.followers} followers`);
         
-        }
+  }
     
 };
 
 
-const poly = new User({
-  name: 'Poly',
-  age: 3,
-  followers: 17,
-});
+const poly = new User('Poly', 3, 17);
 
-
-const mango = new User({
-  name: 'Mango',
-  age: 2,
-  followers: 20,
-});
-
+const mango = new User('Mango', 2, 20);
 
 mango.getInfo(); // User Mango is 2 years old and has 20 followers
 
